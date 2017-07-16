@@ -1,0 +1,21 @@
+{
+    "extends": "airbnb",
+    "env": {
+        "browser": true,
+        "node": true
+    },
+    "globals": {
+        "expect": true,
+        "describe": true,
+        "it": true,
+        "beforeEach": true,
+        "afterEach": true,
+        "context": true
+    },
+    "rules": {
+        "comma-dangle": "off",
+        "arrow-parens": ["error", "as-needed"],
+        "no-unused-expressions": "off",
+        "class-methods-use-this": "off"
+    }
+}
