@@ -1,7 +1,8 @@
-import MineSlot from '../../minesweeper/slots/mine';
+import Mine from '../../minesweeper/slots/mine';
 
 describe('Mine Slot', () => {
-  const buildMineSlot = () => new MineSlot();
+  const buildMineSlot = () => new Mine();
+
   it('should be created without a flag', () => {
     const mine = buildMineSlot();
     expect(mine.hasFlag()).to.equals(false);

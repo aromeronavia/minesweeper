@@ -1,4 +1,4 @@
-export default class MineSlot {
+export default class Mine {
   constructor() {
     this.flagged = false;
   }
