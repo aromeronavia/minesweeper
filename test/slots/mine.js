@@ -1,4 +1,4 @@
-import MineSlot from '../minesweeper/slots/mine';
+import MineSlot from '../../minesweeper/slots/mine';
 
 describe('Mine Slot', () => {
   const buildMineSlot = () => new MineSlot();
