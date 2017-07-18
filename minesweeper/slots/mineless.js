@@ -2,7 +2,8 @@ class TooManyMines extends Error {}
 class NoNegativeMines extends Error {}
 
 export {
-  TooManyMines
+  TooManyMines,
+  NoNegativeMines
 };
 
 export default class Mineless {
