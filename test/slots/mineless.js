@@ -23,17 +23,4 @@ describe('Mineless slot', () => {
   it('should not have less than zero mines around', () => {
     expect(() => buildMinelessSlot(-1)).to.throw(NoNegativeMines);
   });
-
-  it('should have a flag', () => {
-    const slot = buildMinelessSlot();
-    slot.flag();
-    expect(slot.hasFlag()).to.equals(true);
-  });
-
-  it('should not have a flag', () => {
-    const slot = buildMinelessSlot();
-    slot.flag();
-    slot.unflag();
-    expect(slot.hasFlag()).to.equals(false);
-  });
 });

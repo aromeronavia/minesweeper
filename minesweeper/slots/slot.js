@@ -14,4 +14,8 @@ export default class Slot {
   hasFlag() {
     return this.flagged;
   }
+
+  hasMine() {
+    return false;
+  }
 }
