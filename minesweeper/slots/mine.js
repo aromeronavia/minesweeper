@@ -1,17 +1,3 @@
-export default class Mine {
-  constructor() {
-    this.flagged = false;
-  }
+import Slot from './slot';
 
-  flag() {
-    this.flagged = true;
-  }
-
-  unflag() {
-    this.flagged = false;
-  }
-
-  hasFlag() {
-    return this.flagged;
-  }
-}
+export default class Mine extends Slot {}
