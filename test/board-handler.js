@@ -18,6 +18,7 @@ describe('Board Handler', () => {
 
   it('should reveal a slot in the board in a certain position', () => {
     const handler = buildBoardHandler();
+    expect(handler.isRevealed(5, 5)).to.be.false;
     handler.revealSlot(5, 5);
     expect(handler.isRevealed(5, 5)).to.be.true;
   });
