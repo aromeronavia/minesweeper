@@ -2,14 +2,13 @@ import Mineless from './slots/mineless';
 import Mine from './slots/mine';
 
 const BOARD_SIZE = 9;
-const MINES = 10;
 
 export default class Board {
-  constructor() {
-    this.board = this.createBoard();
+  constructor(mines = 0) {
+    this.board = this.createBoard(mines);
   }
 
-  createBoard() {
+  createBoard(mines) {
     const board = [];
     for (let i = 0; i < BOARD_SIZE; i += 1) {
       const row = [];
@@ -19,19 +18,29 @@ export default class Board {
       }
     }
 
-    return this.insertMines(board);
+    return this.insertMines(board, mines);
   }
 
-  insertMines(board) {
-    const minedBoard = board;
-
-    for (let i = 0; i < MINES; i += 1) {
-      const randomRow = this.getRandomIndex();
-      const randomColumn = this.getRandomIndex();
-      minedBoard[randomRow][randomColumn] = new Mine();
+  insertMines(board, mines) {
+    for (let i = 0; i < mines; i += 1) {
+      this.insertMine(board);
     }
 
-    return minedBoard;
+    return board;
+  }
+
+  insertMine(board) {
+    let randomRow;
+    let randomColumn;
+    let randomSlot;
+
+    do {
+      randomRow = this.getRandomIndex();
+      randomColumn = this.getRandomIndex();
+      randomSlot = board[randomRow][randomColumn];
+    } while (randomSlot.hasMine());
+
+    board[randomRow][randomColumn] = new Mine();
   }
 
   getRandomIndex() {

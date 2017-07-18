@@ -6,7 +6,7 @@ describe('Board', () => {
   const buildBoard = mines => new Board(mines);
 
   it('should have nine rows and nine columns', () => {
-    const board = buildBoard();
+    const board = buildBoard(10);
     expect(board.getBoard()).to.have.lengthOf(BOARD_SIZE);
     for (let i = 0; i < BOARD_SIZE; i += 1) {
       expect(board.getBoard()[i]).to.have.lengthOf(BOARD_SIZE);

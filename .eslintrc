@@ -16,6 +16,7 @@
         "comma-dangle": "off",
         "arrow-parens": ["error", "as-needed"],
         "no-unused-expressions": "off",
-        "class-methods-use-this": "off"
+        "class-methods-use-this": "off",
+        "no-param-reassign": "off"
     }
 }
