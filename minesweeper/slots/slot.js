@@ -1,6 +1,7 @@
 export default class Slot {
   constructor() {
     this.flagged = false;
+    this.revealed = false;
   }
 
   flag() {
@@ -17,5 +18,13 @@ export default class Slot {
 
   hasMine() {
     return false;
+  }
+
+  isRevealed() {
+    return this.revealed;
+  }
+
+  reveal() {
+    this.revealed = true;
   }
 }

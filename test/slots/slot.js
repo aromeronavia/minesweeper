@@ -3,10 +3,19 @@ import Slot from '../../minesweeper/slots/slot';
 describe('Slot', () => {
   const buildSlot = () => new Slot();
 
-  it('should be created without a flag and without a mine', () => {
+  it('should be created without a flag', () => {
     const slot = buildSlot();
     expect(slot.hasFlag()).to.equals(false);
+  });
+
+  it('should be created without a mine', () => {
+    const slot = buildSlot();
     expect(slot.hasMine()).to.equals(false);
+  });
+
+  it('should be unrevealed', () => {
+    const slot = buildSlot();
+    expect(slot.isRevealed()).to.equals(false);
   });
 
   it('should not have a flag', () => {
@@ -25,5 +34,11 @@ describe('Slot', () => {
     slot.flag();
     slot.unflag();
     expect(slot.hasFlag()).to.equals(false);
+  });
+
+  it('should reveal a slot', () => {
+    const slot = buildSlot();
+    slot.reveal();
+    expect(slot.isRevealed()).to.equals(true);
   });
 });
