@@ -27,8 +27,4 @@ describe('Board', () => {
 
     expect(numberOfMines).to.equals(10);
   });
-
-  it.skip('should reveal a slot', () => {
-
-  });
 });

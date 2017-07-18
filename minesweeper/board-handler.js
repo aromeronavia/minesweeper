@@ -19,7 +19,7 @@ export default class BoardHandler {
     return this.getSlotAt(row, column).isRevealed();
   }
 
-  revealSlot(row, column) {
+  reveal(row, column) {
     this.getSlotAt(row, column).reveal();
   }
 
