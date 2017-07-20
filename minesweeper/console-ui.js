@@ -34,4 +34,8 @@ export default class ConsoleUI {
   getSlotAt(row, column) {
     return this.board[row][column];
   }
+
+  flag(row, column) {
+    this.board[row][column] = 'f';
+  }
 }

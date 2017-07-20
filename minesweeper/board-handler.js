@@ -6,6 +6,7 @@ export default class BoardHandler {
 
   flag(row, column) {
     this.getSlotAt(row, column).flag();
+    this.ui.flag(row, column);
   }
 
   unflag(row, column) {

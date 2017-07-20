@@ -1,8 +1,12 @@
 import BoardHandler from '../minesweeper/board-handler';
 import Board from '../minesweeper/board';
+import ConsoleUI from '../minesweeper/console-ui';
 
 describe('Board Handler', () => {
-  const buildBoardHandler = () => new BoardHandler(new Board(10));
+  const buildBoardHandler = () => {
+    const board = new Board(10);
+    return new BoardHandler(board, new ConsoleUI(board));
+  };
 
   it('should flag a slot in the board', () => {
     const handler = buildBoardHandler();
