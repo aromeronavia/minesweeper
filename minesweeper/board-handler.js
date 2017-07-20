@@ -1,6 +1,7 @@
 export default class BoardHandler {
-  constructor(board) {
+  constructor(board, ui) {
     this.board = board;
+    this.ui = ui;
   }
 
   flag(row, column) {

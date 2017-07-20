@@ -1,6 +1,3 @@
-import Board from './board';
-import BoardHandler from './board-handler';
-
 export default class Minesweeper {
   constructor(boardHandler) {
     this.boardHandler = boardHandler;
