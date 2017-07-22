@@ -42,14 +42,4 @@ describe('Minesweeper', () => {
     game.click(5, 5);
     expect(boardHandler.hasFlag(5, 5)).to.equals(false);
   });
-
-  it('should modify the ui if the board changes', () => {
-    const board = new Board();
-    const ui = new ConsoleUI(board);
-    const boardHandler = new BoardHandler(board, ui);
-    const game = buildMinesweeper(boardHandler);
-
-    game.rightClick(5, 5);
-    expect(ui.getSlotAt(5, 5)).to.equals('f');
-  });
 });

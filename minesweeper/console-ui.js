@@ -38,4 +38,12 @@ export default class ConsoleUI {
   flag(row, column) {
     this.board[row][column] = 'f';
   }
+
+  unflag(row, column) {
+    this.board[row][column] = '[]';
+  }
+
+  reveal(row, column, minesAround) {
+    this.board[row][column] = minesAround;
+  }
 }

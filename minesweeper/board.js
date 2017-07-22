@@ -41,10 +41,27 @@ export default class Board {
     } while (randomSlot.hasMine());
 
     board[randomRow][randomColumn] = new Mine();
+    this.addMineAround(board, randomRow, randomColumn - 1);
+    this.addMineAround(board, randomRow + 1, randomColumn - 1);
+    this.addMineAround(board, randomRow + 1, randomColumn);
+    this.addMineAround(board, randomRow + 1, randomColumn + 1);
+    this.addMineAround(board, randomRow, randomColumn + 1);
+    this.addMineAround(board, randomRow - 1, randomColumn + 1);
+    this.addMineAround(board, randomRow - 1, randomColumn);
+    this.addMineAround(board, randomRow - 1, randomColumn - 1);
   }
 
   getRandomIndex() {
     return Math.floor(Math.random() * 9);
+  }
+
+  addMineAround(board, row, column) {
+    if (row >= 0 && row < BOARD_SIZE && column >= 0 && column < BOARD_SIZE) {
+      const slot = board[row][column];
+      if (slot.hasMine()) return;
+
+      slot.addMineAround();
+    }
   }
 
   getBoard() {

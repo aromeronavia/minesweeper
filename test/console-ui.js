@@ -5,7 +5,7 @@ describe('Console UI', () => {
   const buildConsoleUI = board => new ConsoleUI(board);
 
   it('should create the board in console with valid length', () => {
-    const board = new Board();
+    const board = new Board(10);
     const ui = buildConsoleUI(board);
 
     expect(ui.getBoard()).to.have.lengthOf(board.getBoard().length);
@@ -15,7 +15,7 @@ describe('Console UI', () => {
   });
 
   it('should mirror the board including mines', () => {
-    const board = new Board();
+    const board = new Board(10);
     const ui = buildConsoleUI(board);
 
     const expectCorrectUIElement = (i, j) => {
@@ -26,7 +26,7 @@ describe('Console UI', () => {
         expect(uiSlot).to.equals(boardSlot.getMinesAround());
       } else if (boardSlot.hasFlag()) {
         expect(uiSlot).to.equals('!');
-      } else {
+      } else if (!boardSlot.isRevealed()) {
         expect(uiSlot).to.equals('[]');
       }
     };

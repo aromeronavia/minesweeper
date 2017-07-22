@@ -27,4 +27,12 @@ export default class Slot {
   reveal() {
     this.revealed = true;
   }
+
+  getMinesAround() {
+    return 0;
+  }
+
+  addMineAround() {
+    return 0;
+  }
 }

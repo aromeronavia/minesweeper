@@ -21,4 +21,8 @@ export default class Mineless extends Slot {
   getMinesAround() {
     return this.minesAround;
   }
+
+  addMineAround() {
+    this.minesAround += 1;
+  }
 }

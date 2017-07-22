@@ -27,4 +27,37 @@ describe('Board', () => {
 
     expect(numberOfMines).to.equals(10);
   });
+
+  it.skip('should set the number of mines around to the slots', () => {
+    const board = buildBoard(10);
+
+    const getMine = (i, j) => {
+      if (i >= 0 && i < 9 && j >= 0 && j < 9) {
+        return board.getSlotAt(i, j).hasMine() ? 1 : 0;
+      }
+
+      return 0;
+    };
+
+    const expectCorrectNumberOfMines = (i, j) => {
+      let minesAround = 0;
+
+      minesAround += getMine(i, j - 1);
+      minesAround += getMine(i + 1, j);
+      minesAround += getMine(i + 1, j - 1);
+      minesAround += getMine(i + 1, j + 1);
+      minesAround += getMine(i, j + 1);
+      minesAround += getMine(i - 1, j + 1);
+      minesAround += getMine(i - 1, j);
+      minesAround += getMine(i - 1, j - 1);
+
+      expect(board.getSlotAt(i, j).getMinesAround()).to.equals(minesAround);
+    };
+
+    for (let i = 0; i < BOARD_SIZE; i += 1) {
+      for (let j = 0; j < BOARD_SIZE; j += 1) {
+        expectCorrectNumberOfMines(i, j);
+      }
+    }
+  });
 });

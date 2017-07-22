@@ -11,6 +11,7 @@ export default class BoardHandler {
 
   unflag(row, column) {
     this.getSlotAt(row, column).unflag();
+    this.ui.unflag(row, column);
   }
 
   hasFlag(row, column) {
@@ -22,7 +23,9 @@ export default class BoardHandler {
   }
 
   reveal(row, column) {
-    this.getSlotAt(row, column).reveal();
+    const slot = this.getSlotAt(row, column);
+    slot.reveal();
+    this.ui.reveal(row, column, slot.getMinesAround());
   }
 
   getSlotAt(row, column) {
