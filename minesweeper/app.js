@@ -7,7 +7,7 @@ import readline from 'readline';
 class App {
   constructor() {
     const boardHandler = this.createBoardHandler();
-    this.minesweeper = new Minesweeper();
+    this.minesweeper = new Minesweeper(boardHandler);
 
     this.reader = readline.createInterface({
       input: process.stdin,
@@ -25,11 +25,17 @@ class App {
   }
 
   handleTurns(answer) {
-    console.log('Answer', answer);
+    this.handleAnswer(answer);
     this.readMove();
   }
 
+  handleAnswer(answer) {
+    const [row, column] = answer.split(' ');
+    this.minesweeper.click(row, column);
+  }
+
   readMove() {
+    this.minesweeper.draw();
     this.reader.question('Next Move \n', this.handleTurns.bind(this));
   }
 }

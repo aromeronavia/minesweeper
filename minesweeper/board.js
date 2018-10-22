@@ -68,6 +68,10 @@ export default class Board {
     return this.board;
   }
 
+  getBoardSize() {
+    return BOARD_SIZE;
+  }
+
   getSlotAt(row, column) {
     return this.board[row][column];
   }

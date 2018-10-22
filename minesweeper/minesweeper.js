@@ -14,4 +14,8 @@ export default class Minesweeper {
   rightClick(row, column) {
     this.boardHandler.flag(row, column);
   }
+
+  draw() {
+    this.boardHandler.draw();
+  }
 }

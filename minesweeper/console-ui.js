@@ -4,7 +4,7 @@ export default class ConsoleUI {
   }
 
   createBoard(board) {
-    const boardSize = board.getBoard().length;
+    const boardSize = board.getBoardSize();
     const uiBoard = [];
     for (let i = 0; i < boardSize; i += 1) {
       const row = [];
@@ -25,6 +25,17 @@ export default class ConsoleUI {
     if (targetSlot.hasFlag()) return '!';
 
     return '[]';
+  }
+
+  draw() {
+    for (let i = 0; i < 9; i += 1) {
+      let row = '';
+      for (let j = 0; j < 9; j += 1) {
+        row += this.getSlotAt(i, j);
+      }
+
+      console.log(row);
+    }
   }
 
   getBoard() {

@@ -31,4 +31,8 @@ export default class BoardHandler {
   getSlotAt(row, column) {
     return this.board.getSlotAt(row, column);
   }
+
+  draw() {
+    this.ui.draw();
+  }
 }
