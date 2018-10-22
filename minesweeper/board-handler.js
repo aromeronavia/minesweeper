@@ -25,7 +25,6 @@ export default class BoardHandler {
   reveal(row, column) {
     const slot = this.getSlotAt(row, column);
     slot.reveal();
-    this.ui.reveal(row, column, slot.getMinesAround());
   }
 
   getSlotAt(row, column) {

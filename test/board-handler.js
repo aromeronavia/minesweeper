@@ -45,13 +45,4 @@ describe('Board Handler', () => {
     boardHandler.unflag(5, 5);
     expect(ui.getSlotAt(5, 5)).to.equals('[]');
   });
-
-  it('should reveal a slot and put the number of mines around', () => {
-    const board = new Board();
-    const ui = new ConsoleUI(board);
-    const boardHandler = new BoardHandler(board, ui);
-
-    boardHandler.reveal(5, 5);
-    expect(ui.getSlotAt(5, 5)).to.equals(0);
-  });
 });

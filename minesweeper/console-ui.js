@@ -1,3 +1,21 @@
+class ConsoleSlot {
+  constructor(slot) {
+    this.slot = slot;
+  }
+
+  draw() {
+    if (this.slot.isRevealed()) {
+      if (this.slot.hasMine()) {
+        return 'X';
+      }
+
+      return this.slot.getMinesAround();
+    } else {
+      return '[]';
+    }
+  }
+}
+
 export default class ConsoleUI {
   constructor(board) {
     this.board = this.createBoard(board);
@@ -19,23 +37,24 @@ export default class ConsoleUI {
   }
 
   createSlot(board, i, j) {
-    const targetSlot = board.getSlotAt(i, j);
+    const slot = board.getSlotAt(i, j);
 
-    if (targetSlot.isRevealed()) return targetSlot.getMinesAround();
-    if (targetSlot.hasFlag()) return '!';
-
-    return '[]';
+    return new ConsoleSlot(slot);
   }
 
   draw() {
     for (let i = 0; i < 9; i += 1) {
       let row = '';
       for (let j = 0; j < 9; j += 1) {
-        row += this.getSlotAt(i, j);
+        row += this.drawSlot(i, j);
       }
 
       console.log(row);
     }
+  }
+
+  drawSlot(row, column) {
+    return this.getSlotAt(row, column).draw();
   }
 
   getBoard() {
@@ -52,9 +71,5 @@ export default class ConsoleUI {
 
   unflag(row, column) {
     this.board[row][column] = '[]';
-  }
-
-  reveal(row, column, minesAround) {
-    this.board[row][column] = minesAround;
   }
 }

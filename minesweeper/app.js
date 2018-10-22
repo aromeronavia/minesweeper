@@ -16,7 +16,7 @@ class App {
   }
 
   createBoardHandler() {
-    const board = new Board();
+    const board = new Board(10);
 
     return new BoardHandler(
       board,
