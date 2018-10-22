@@ -4,7 +4,7 @@ import Board from './board';
 import ConsoleUI from './console-ui';
 import readline from 'readline';
 
-class App {
+class ConsoleApp {
   constructor() {
     const boardHandler = this.createBoardHandler();
     this.minesweeper = new Minesweeper(boardHandler);
@@ -18,10 +18,7 @@ class App {
   createBoardHandler() {
     const board = new Board(10);
 
-    return new BoardHandler(
-      board,
-      new ConsoleUI(board)
-    )
+    return new BoardHandler(board, new ConsoleUI(board));
   }
 
   handleTurns(answer) {
@@ -40,5 +37,5 @@ class App {
   }
 }
 
-const app = new App();
+const app = new ConsoleApp();
 app.readMove();
