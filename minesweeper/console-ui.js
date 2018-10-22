@@ -10,6 +10,8 @@ class ConsoleSlot {
       }
 
       return this.slot.getMinesAround();
+    } else if (this.slot.hasFlag()) {
+      return 'f';
     } else {
       return '[]';
     }

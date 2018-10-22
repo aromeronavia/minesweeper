@@ -41,7 +41,6 @@ export default class Board {
     } while (randomSlot.hasMine());
 
     board[randomRow][randomColumn] = new Mine();
-    console.log('Mine: ', randomRow, randomColumn);
     this.addMineAround(board, randomRow, randomColumn - 1);
     this.addMineAround(board, randomRow + 1, randomColumn - 1);
     this.addMineAround(board, randomRow + 1, randomColumn);
