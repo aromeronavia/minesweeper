@@ -18,11 +18,6 @@ describe('Slot', () => {
     expect(slot.isRevealed()).to.equals(false);
   });
 
-  it('should not have a flag', () => {
-    const slot = buildSlot();
-    expect(slot.hasFlag()).to.equals(false);
-  });
-
   it('should be able to set a flag', () => {
     const slot = buildSlot();
     slot.flag();
