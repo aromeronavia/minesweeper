@@ -59,6 +59,10 @@ export default class ConsoleUI {
     return this.getSlotAt(row, column).draw();
   }
 
+  drawGameOver() {
+    console.log('Game Over! Thanks for playing :D');
+  }
+
   getBoard() {
     return this.board;
   }

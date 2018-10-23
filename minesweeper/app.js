@@ -20,8 +20,14 @@ class ConsoleApp {
   }
 
   handleTurns(answer) {
-    this.handleAnswer(answer);
-    this.readMove();
+    try {
+      this.handleAnswer(answer);
+      this.readMove();
+    } catch (error) {
+      this.minesweeper.draw();
+      this.minesweeper.drawGameOver();
+      process.exit(0);
+    }
   }
 
   handleAnswer(answer) {

@@ -7,6 +7,7 @@ export default class Mine extends Slot {
   }
 
   reveal() {
+    super.reveal();
     throw new SlotWithMineRevealed();
   }
 }

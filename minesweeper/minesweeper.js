@@ -25,4 +25,8 @@ export default class Minesweeper {
   draw() {
     this.ui.draw();
   }
+
+  drawGameOver() {
+    this.ui.drawGameOver();
+  }
 }
