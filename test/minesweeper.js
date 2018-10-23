@@ -1,6 +1,5 @@
 import Minesweeper from '../minesweeper/minesweeper';
 import Board from '../minesweeper/board';
-import ConsoleUI from '../minesweeper/ui/console';
 import { GameOver } from '../minesweeper/errors';
 
 const BOARD_SIZE = 9;
@@ -18,7 +17,7 @@ describe('Minesweeper', () => {
 
   it('should flag a slot in the board', () => {
     const board = new Board(10);
-    const minesweeper = new Minesweeper(board, new ConsoleUI(board));
+    const minesweeper = new Minesweeper(board);
 
     minesweeper.flag(5, 5);
 
@@ -27,7 +26,7 @@ describe('Minesweeper', () => {
 
   it('should unflag a slot in the board', () => {
     const board = new Board(10);
-    const minesweeper = new Minesweeper(board, new ConsoleUI(board));
+    const minesweeper = new Minesweeper(board);
 
     minesweeper.unflag(5, 5);
 
@@ -35,37 +34,17 @@ describe('Minesweeper', () => {
   });
 
   it('should reveal a slot in the board in a certain position', () => {
-    const board = new Board(0);
-    const minesweeper = new Minesweeper(board, new ConsoleUI(board));
+    const board = new Board();
+    const minesweeper = new Minesweeper(board);
 
     minesweeper.reveal(5, 5);
 
     expect(board.isRevealed(5, 5)).to.be.true;
   });
 
-  it('should flag and modify the ui', () => {
-    const board = new Board(10);
-    const ui = new ConsoleUI(board);
-    const minesweeper = new Minesweeper(board, ui);
-
-    minesweeper.flag(5, 5);
-    expect(ui.getSlotAt(5, 5).draw()).to.equals('f');
-  });
-
-  it('should unflag and modify the ui', () => {
-    const board = new Board(10);
-    const ui = new ConsoleUI(board);
-    const minesweeper = new Minesweeper(board, ui);
-
-    minesweeper.flag(5, 5);
-    minesweeper.unflag(5, 5);
-    expect(ui.getSlotAt(5, 5).draw()).to.equals('[]');
-  });
-
   it('should throw error when revealing slot with mine', () => {
     const board = new Board(10);
-    const ui = new ConsoleUI(board);
-    const minesweeper = new Minesweeper(board, ui);
+    const minesweeper = new Minesweeper(board);
     const [row, column] = findSlotWithMine(board);
 
     try {

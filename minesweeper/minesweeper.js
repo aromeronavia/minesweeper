@@ -1,9 +1,8 @@
 import { GameOver } from './errors';
 
 export default class Minesweeper {
-  constructor(board, ui) {
+  constructor(board) {
     this.board = board;
-    this.ui = ui;
   }
 
   flag(row, column) {
@@ -20,13 +19,5 @@ export default class Minesweeper {
     } catch (error) {
       throw new GameOver();
     }
-  }
-
-  draw() {
-    this.ui.draw();
-  }
-
-  drawGameOver() {
-    this.ui.drawGameOver();
   }
 }

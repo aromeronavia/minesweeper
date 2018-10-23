@@ -5,18 +5,19 @@ import readline from 'readline';
 
 class ConsoleApp {
   constructor() {
-    this.minesweeper = this.createMinesweeper();
-
-    this.reader = readline.createInterface({
+    this.consoleReader = readline.createInterface({
       input: process.stdin,
       output: process.stdout
     });
+
+    const board = new Board(10);
+    this.minesweeper = new Minesweeper(board);
+    this.ui = new ConsoleUI(board);
   }
 
-  createMinesweeper() {
-    const board = new Board(10);
-
-    return new Minesweeper(board, new ConsoleUI(board));
+  readMove() {
+    this.ui.draw();
+    this.consoleReader.question('Next Move \n', this.handleTurns.bind(this));
   }
 
   handleTurns(answer) {
@@ -24,8 +25,8 @@ class ConsoleApp {
       this.handleAnswer(answer);
       this.readMove();
     } catch (error) {
-      this.minesweeper.draw();
-      this.minesweeper.drawGameOver();
+      this.ui.draw();
+      this.ui.drawGameOver();
       process.exit(0);
     }
   }
@@ -33,11 +34,6 @@ class ConsoleApp {
   handleAnswer(answer) {
     const [row, column] = answer.split(' ');
     this.minesweeper.reveal(row, column);
-  }
-
-  readMove() {
-    this.minesweeper.draw();
-    this.reader.question('Next Move \n', this.handleTurns.bind(this));
   }
 }
 
