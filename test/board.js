@@ -1,9 +1,20 @@
 import Board from '../minesweeper/board';
+import { SlotWithMineRevealed } from '../minesweeper/errors';
 
 const BOARD_SIZE = 9;
 
 describe('Board', () => {
   const buildBoard = mines => new Board(mines);
+
+  const findSlotWithMine = board => {
+    for (let row = 0; row < BOARD_SIZE; row++) {
+      for (let column = 0; column < BOARD_SIZE; column++) {
+        if (board.getSlotAt(row, column).hasMine()) {
+          return [row, column];
+        }
+      }
+    }
+  };
 
   it('should have nine rows and nine columns', () => {
     const board = buildBoard(10);
@@ -26,6 +37,51 @@ describe('Board', () => {
     }
 
     expect(numberOfMines).to.equals(10);
+  });
+
+  it('should reveal a slot', () => {
+    const board = buildBoard();
+
+    board.reveal(5, 5);
+
+    expect(board.getSlotAt(5, 5).isRevealed()).to.be.true;
+  });
+
+  it('should flag a slot', () => {
+    const board = buildBoard(10);
+
+    board.flag(5, 5);
+
+    expect(board.getSlotAt(5, 5).hasFlag()).to.be.true;
+  });
+
+  it('should unflag a slot', () => {
+    const board = buildBoard(10);
+
+    board.flag(5, 5);
+    board.unflag(5, 5);
+
+    expect(board.getSlotAt(5, 5).hasFlag()).to.be.false;
+  });
+
+  it('should tell if slot is revealed', () => {
+    const board = buildBoard(10);
+
+    board.reveal(5, 5);
+
+    expect(board.isRevealed(5, 5)).to.be.true;
+  });
+
+  it('should throw an error if revealed slot has mine', () => {
+    const board = buildBoard(10);
+    const [row, column] = findSlotWithMine(board);
+
+    try {
+      board.reveal(row, column);
+      expect(true).to.equals(false);
+    } catch (error) {
+      expect(error).to.be.instanceOf(SlotWithMineRevealed);
+    }
   });
 
   it.skip('should set the number of mines around to the slots', () => {

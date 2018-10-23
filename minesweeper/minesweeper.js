@@ -1,3 +1,5 @@
+import { GameOver } from './errors';
+
 export default class Minesweeper {
   constructor(board, ui) {
     this.board = board;
@@ -5,28 +7,19 @@ export default class Minesweeper {
   }
 
   flag(row, column) {
-    this.getSlotAt(row, column).flag();
+    this.board.flag(row, column);
   }
 
   unflag(row, column) {
-    this.getSlotAt(row, column).unflag();
-  }
-
-  hasFlag(row, column) {
-    return this.getSlotAt(row, column).hasFlag();
+    this.board.unflag(row, column);
   }
 
   reveal(row, column) {
-    const slot = this.getSlotAt(row, column);
-    slot.reveal();
-  }
-
-  isRevealed(row, column) {
-    return this.getSlotAt(row, column).isRevealed();
-  }
-
-  getSlotAt(row, column) {
-    return this.board.getSlotAt(row, column);
+    try {
+      this.board.reveal(row, column);
+    } catch (error) {
+      throw new GameOver();
+    }
   }
 
   draw() {

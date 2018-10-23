@@ -75,4 +75,24 @@ export default class Board {
   getSlotAt(row, column) {
     return this.board[row][column];
   }
+
+  flag(row, column) {
+    this.getSlotAt(row, column).flag();
+  }
+
+  unflag(row, column) {
+    this.getSlotAt(row, column).unflag();
+  }
+
+  reveal(row, column) {
+    this.getSlotAt(row, column).reveal();
+  }
+
+  hasFlag(row, column) {
+    return this.getSlotAt(row, column).hasFlag();
+  }
+
+  isRevealed(row, column) {
+    return this.getSlotAt(row, column).isRevealed();
+  }
 }
