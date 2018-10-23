@@ -31,9 +31,11 @@
     "eslint-plugin-import": "^2.7.0",
     "eslint-plugin-jsx-a11y": "^5.1.1",
     "eslint-plugin-react": "^7.1.0",
-    "mocha": "^3.4.2"
+    "mocha": "^3.4.2",
+    "npx": "^10.2.0"
   },
   "scripts": {
+    "start": "npx babel-node minesweeper/app.js",
     "test": "mocha --compilers js:@babel/register --recursive",
     "tdd": "mocha --compilers js:@babel/register --watch --recursive"
   },

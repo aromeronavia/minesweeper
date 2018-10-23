@@ -1,6 +1,6 @@
 import Minesweeper from '../minesweeper/minesweeper';
 import Board from '../minesweeper/board';
-import ConsoleUI from '../minesweeper/console-ui';
+import ConsoleUI from '../minesweeper/ui/console';
 import { GameOver } from '../minesweeper/errors';
 
 const BOARD_SIZE = 9;

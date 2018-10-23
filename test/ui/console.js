@@ -1,5 +1,5 @@
-import ConsoleUI from '../minesweeper/console-ui';
-import Board from '../minesweeper/board';
+import ConsoleUI from '../../minesweeper/ui/console';
+import Board from '../../minesweeper/board';
 
 describe('Console UI', () => {
   const buildConsoleUI = board => new ConsoleUI(board);

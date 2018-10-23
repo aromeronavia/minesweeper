@@ -65,7 +65,7 @@ describe('Board', () => {
   });
 
   it('should tell if slot is revealed', () => {
-    const board = buildBoard(10);
+    const board = buildBoard();
 
     board.reveal(5, 5);
 

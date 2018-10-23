@@ -1,6 +1,6 @@
 import Minesweeper from './minesweeper';
 import Board from './board';
-import ConsoleUI from './console-ui';
+import ConsoleUI from './ui/console';
 import readline from 'readline';
 
 class ConsoleApp {
