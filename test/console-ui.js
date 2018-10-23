@@ -4,16 +4,6 @@ import Board from '../minesweeper/board';
 describe('Console UI', () => {
   const buildConsoleUI = board => new ConsoleUI(board);
 
-  it('should create the board in console with valid length', () => {
-    const board = new Board(10);
-    const ui = buildConsoleUI(board);
-
-    expect(ui.getBoard()).to.have.lengthOf(board.getBoard().length);
-    for (let i = 0; i < 9; i += 1) {
-      expect(ui.getBoard()[i]).to.have.lengthOf(9);
-    }
-  });
-
   it('should mirror the board including mines', () => {
     const board = new Board(10);
     const ui = buildConsoleUI(board);

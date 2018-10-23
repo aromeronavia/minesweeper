@@ -63,19 +63,7 @@ export default class ConsoleUI {
     console.log('Game Over! Thanks for playing :D');
   }
 
-  getBoard() {
-    return this.board;
-  }
-
   getSlotAt(row, column) {
     return this.board[row][column];
-  }
-
-  flag(row, column) {
-    this.board[row][column] = 'f';
-  }
-
-  unflag(row, column) {
-    this.board[row][column] = '[]';
   }
 }
