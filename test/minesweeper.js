@@ -1,45 +1,48 @@
 import Minesweeper from '../minesweeper/minesweeper';
 import Board from '../minesweeper/board';
-import BoardHandler from '../minesweeper/board-handler';
 import ConsoleUI from '../minesweeper/console-ui';
 
 describe('Minesweeper', () => {
-  const buildMinesweeper = boardHandler => new Minesweeper(boardHandler);
+  const buildMinesweeper = () => {
+    const board = new Board(10);
+    return new Minesweeper(board, new ConsoleUI(board));
+  };
 
-  it('should click a mine and reveal it', () => {
-    const board = new Board();
-    const ui = new ConsoleUI(board);
-    const boardHandler = new BoardHandler(board, ui);
-    const game = buildMinesweeper(boardHandler);
-
-    expect(boardHandler.isRevealed(5, 5)).to.equals(false);
-
-    game.click(5, 5);
-    expect(boardHandler.isRevealed(5, 5)).to.equals(true);
+  it('should flag a slot in the board', () => {
+    const minesweeper = buildMinesweeper();
+    minesweeper.flag(5, 5);
+    expect(minesweeper.hasFlag(5, 5)).to.be.true;
   });
 
-  it('should right click a mine and flag it', () => {
-    const board = new Board();
-    const ui = new ConsoleUI(board);
-    const boardHandler = new BoardHandler(board, ui);
-    const game = buildMinesweeper(boardHandler);
-
-    expect(boardHandler.hasFlag(5, 5)).to.equals(false);
-
-    game.rightClick(5, 5);
-    expect(boardHandler.hasFlag(5, 5)).to.equals(true);
+  it('should unflag a slot in the board', () => {
+    const minesweeper = buildMinesweeper();
+    minesweeper.unflag(5, 5);
+    expect(minesweeper.hasFlag(5, 5)).to.be.false;
   });
 
-  it('should remove the flag if left click on slot', () => {
+  it('should reveal a slot in the board in a certain position', () => {
+    const minesweeper = buildMinesweeper();
+    expect(minesweeper.isRevealed(5, 5)).to.be.false;
+    minesweeper.reveal(5, 5);
+    expect(minesweeper.isRevealed(5, 5)).to.be.true;
+  });
+
+  it('should flag and modify the ui', () => {
     const board = new Board();
     const ui = new ConsoleUI(board);
-    const boardHandler = new BoardHandler(board, ui);
-    const game = buildMinesweeper(boardHandler);
+    const minesweeper = new Minesweeper(board, ui);
 
-    game.rightClick(5, 5);
-    expect(boardHandler.hasFlag(5, 5)).to.equals(true);
+    minesweeper.flag(5, 5);
+    expect(ui.getSlotAt(5, 5).draw()).to.equals('f');
+  });
 
-    game.click(5, 5);
-    expect(boardHandler.hasFlag(5, 5)).to.equals(false);
+  it('should unflag and modify the ui', () => {
+    const board = new Board();
+    const ui = new ConsoleUI(board);
+    const minesweeper = new Minesweeper(board, ui);
+
+    minesweeper.flag(5, 5);
+    minesweeper.unflag(5, 5);
+    expect(ui.getSlotAt(5, 5).draw()).to.equals('[]');
   });
 });

@@ -1,21 +1,35 @@
 export default class Minesweeper {
-  constructor(boardHandler) {
-    this.boardHandler = boardHandler;
+  constructor(board, ui) {
+    this.board = board;
+    this.ui = ui;
   }
 
-  click(row, column) {
-    if (this.boardHandler.hasFlag(row, column)) {
-      this.boardHandler.unflag(row, column);
-    } else {
-      this.boardHandler.reveal(row, column);
-    }
+  flag(row, column) {
+    this.getSlotAt(row, column).flag();
   }
 
-  rightClick(row, column) {
-    this.boardHandler.flag(row, column);
+  unflag(row, column) {
+    this.getSlotAt(row, column).unflag();
+  }
+
+  hasFlag(row, column) {
+    return this.getSlotAt(row, column).hasFlag();
+  }
+
+  reveal(row, column) {
+    const slot = this.getSlotAt(row, column);
+    slot.reveal();
+  }
+
+  isRevealed(row, column) {
+    return this.getSlotAt(row, column).isRevealed();
+  }
+
+  getSlotAt(row, column) {
+    return this.board.getSlotAt(row, column);
   }
 
   draw() {
-    this.boardHandler.draw();
+    this.ui.draw();
   }
 }
