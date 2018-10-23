@@ -22,18 +22,15 @@ class ConsoleApp {
 
   handleTurns(answer) {
     try {
-      this.handleAnswer(answer);
+      const [row, column] = answer.split(' ');
+      this.minesweeper.reveal(row, column);
+
       this.readMove();
     } catch (error) {
       this.ui.draw();
       this.ui.drawGameOver();
       process.exit(0);
     }
-  }
-
-  handleAnswer(answer) {
-    const [row, column] = answer.split(' ');
-    this.minesweeper.reveal(row, column);
   }
 }
 
