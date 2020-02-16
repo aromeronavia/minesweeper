@@ -11,7 +11,7 @@ class ConsoleApp {
       output: process.stdout
     });
 
-    const board = new Board(1);
+    const board = new Board(10);
     this.minesweeper = new Minesweeper(board);
     this.ui = new ConsoleUI(board);
   }
