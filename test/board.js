@@ -1,5 +1,6 @@
 import Board from '../minesweeper/board';
 import { SlotWithMineRevealed } from '../minesweeper/errors';
+import Mine from '../minesweeper/slots/mine';
 
 const BOARD_SIZE = 9;
 
@@ -7,13 +8,15 @@ describe('Board', () => {
   const buildBoard = mines => new Board(mines);
 
   const findSlotWithMine = board => {
-    for (let row = 0; row < BOARD_SIZE; row++) {
-      for (let column = 0; column < BOARD_SIZE; column++) {
+    for (let row = 0; row < BOARD_SIZE; row += 1) {
+      for (let column = 0; column < BOARD_SIZE; column += 1) {
         if (board.getSlotAt(row, column).hasMine()) {
           return [row, column];
         }
       }
     }
+
+    return null;
   };
 
   it('should have nine rows and nine columns', () => {

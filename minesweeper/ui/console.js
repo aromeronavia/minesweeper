@@ -12,9 +12,9 @@ class ConsoleSlot {
       return this.slot.getMinesAround();
     } else if (this.slot.hasFlag()) {
       return 'f';
-    } else {
-      return '[]';
     }
+
+    return '[]';
   }
 }
 
@@ -55,12 +55,13 @@ export default class ConsoleUI {
     }
   }
 
-  drawSlot(row, column) {
-    return this.getSlotAt(row, column).draw();
+  drawGameOver() {
+    this.draw();
+    console.log('Game Over! Thanks for playing :D');
   }
 
-  drawGameOver() {
-    console.log('Game Over! Thanks for playing :D');
+  drawSlot(row, column) {
+    return this.getSlotAt(row, column).draw();
   }
 
   getSlotAt(row, column) {

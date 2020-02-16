@@ -1,7 +1,8 @@
+import readline from 'readline';
+
 import Minesweeper from './minesweeper';
 import Board from './board';
 import ConsoleUI from './ui/console';
-import readline from 'readline';
 
 class ConsoleApp {
   constructor() {
@@ -10,7 +11,7 @@ class ConsoleApp {
       output: process.stdout
     });
 
-    const board = new Board(10);
+    const board = new Board(1);
     this.minesweeper = new Minesweeper(board);
     this.ui = new ConsoleUI(board);
   }
@@ -23,11 +24,10 @@ class ConsoleApp {
   handleTurns(answer) {
     try {
       const [row, column] = answer.split(' ');
-      this.minesweeper.reveal(row, column);
+      this.minesweeper.reveal(parseInt(row, 10), parseInt(column, 10));
 
       this.readMove();
     } catch (error) {
-      this.ui.draw();
       this.ui.drawGameOver();
       process.exit(0);
     }

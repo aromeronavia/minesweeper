@@ -10,6 +10,7 @@ export default class Board {
 
   createBoard(mines) {
     const board = [];
+
     for (let i = 0; i < BOARD_SIZE; i += 1) {
       const row = [];
       board.push(row);
@@ -41,26 +42,57 @@ export default class Board {
     } while (randomSlot.hasMine());
 
     board[randomRow][randomColumn] = new Mine();
-    this.addMineAround(board, randomRow, randomColumn - 1);
-    this.addMineAround(board, randomRow + 1, randomColumn - 1);
-    this.addMineAround(board, randomRow + 1, randomColumn);
-    this.addMineAround(board, randomRow + 1, randomColumn + 1);
-    this.addMineAround(board, randomRow, randomColumn + 1);
-    this.addMineAround(board, randomRow - 1, randomColumn + 1);
-    this.addMineAround(board, randomRow - 1, randomColumn);
-    this.addMineAround(board, randomRow - 1, randomColumn - 1);
+
+    this.addMineCounter(board, randomRow, randomColumn - 1);
+    this.addMineCounter(board, randomRow + 1, randomColumn - 1);
+    this.addMineCounter(board, randomRow + 1, randomColumn);
+    this.addMineCounter(board, randomRow + 1, randomColumn + 1);
+    this.addMineCounter(board, randomRow, randomColumn + 1);
+    this.addMineCounter(board, randomRow - 1, randomColumn + 1);
+    this.addMineCounter(board, randomRow - 1, randomColumn);
+    this.addMineCounter(board, randomRow - 1, randomColumn - 1);
   }
 
   getRandomIndex() {
     return Math.floor(Math.random() * 9);
   }
 
-  addMineAround(board, row, column) {
-    if (row >= 0 && row < BOARD_SIZE && column >= 0 && column < BOARD_SIZE) {
+  addMineCounter(board, row, column) {
+    if (this.isInsideBoardBoundaries(row, column)) {
       const slot = board[row][column];
       if (slot.hasMine()) return;
 
       slot.addMineAround();
+    }
+  }
+
+  isInsideBoardBoundaries(row, column) {
+    return row >= 0 && row < BOARD_SIZE && column >= 0 && column < BOARD_SIZE;
+  }
+
+  flag(row, column) {
+    this.getSlotAt(row, column).flag();
+  }
+
+  unflag(row, column) {
+    this.getSlotAt(row, column).unflag();
+  }
+
+  reveal(row, column) {
+    if (!this.isInsideBoardBoundaries(row, column)) return;
+
+    const slot = this.getSlotAt(row, column);
+
+    if (slot.isRevealed()) return;
+
+    if (slot.getMinesAround() > 0) {
+      slot.reveal();
+    } else if (slot.getMinesAround() === 0) {
+      slot.reveal();
+      this.reveal(row, column + 1);
+      this.reveal(row, column - 1);
+      this.reveal(row + 1, column);
+      this.reveal(row - 1, column);
     }
   }
 
@@ -74,18 +106,6 @@ export default class Board {
 
   getSlotAt(row, column) {
     return this.board[row][column];
-  }
-
-  flag(row, column) {
-    this.getSlotAt(row, column).flag();
-  }
-
-  unflag(row, column) {
-    this.getSlotAt(row, column).unflag();
-  }
-
-  reveal(row, column) {
-    this.getSlotAt(row, column).reveal();
   }
 
   hasFlag(row, column) {

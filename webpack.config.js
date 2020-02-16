@@ -9,7 +9,7 @@ module.exports = {
     port: 3000,
     stats: 'errors-only'
   },
-  entry: path.join(__dirname, 'buscaminas/buscaminas.js'),
+  entry: path.join(__dirname, 'app/index.js'),
   module: {
     rules: [
       {
@@ -34,7 +34,7 @@ module.exports = {
     ]
   },
   output: {
-    path: path.join(__dirname, 'scripts'),
+    path: path.join(__dirname, 'dist'),
     filename: 'index.processed.js'
   },
   plugins: [new HtmlWebpackPlugin({
