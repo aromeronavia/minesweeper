@@ -1,0 +1,41 @@
+html {
+  width: 100%;
+  height: 100%; }
+
+body {
+  background-color: #907163;
+  font-family: monaco; }
+
+.title {
+  color: #1F1F1F;
+  font-size: 16px; }
+
+header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around; }
+
+.minesweeper {
+  display: flex; }
+
+.row {
+  display: flex;
+  justify-content: center; }
+
+.square {
+  width: 20px;
+  height: 20px;
+  background-color: #BDBDBD;
+  border-style: outset;
+  border-width: 1px;
+  text-align: center;
+  cursor: pointer; }
+
+.revealed {
+  background-color: #A8A8A8;
+  border-style: inset;
+  border-width: 1px; }
+
+
+/*# sourceMappingURL=/app.c0e5f9db.css.map */

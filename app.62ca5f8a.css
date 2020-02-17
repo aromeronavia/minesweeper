@@ -1,0 +1,2 @@
+html{width:100%;height:100%}body{background-color:#907163;font-family:monaco}.title{color:#1f1f1f;font-size:16px}header{flex-direction:column;align-items:center;justify-content:space-around}.minesweeper,.row,header{display:flex}.row{justify-content:center}.square{width:20px;height:20px;background-color:#bdbdbd;border-style:outset;border-width:1px;text-align:center;cursor:pointer}.revealed{background-color:#a8a8a8;border-style:inset;border-width:1px}
+/*# sourceMappingURL=app.62ca5f8a.css.map */
