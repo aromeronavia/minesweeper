@@ -18,7 +18,7 @@ class ConsoleApp {
 
   readMove() {
     this.ui.draw();
-    this.consoleReader.question('Next Move \n', this.handleTurns.bind(this));
+    this.consoleReader.question('Insert your move [row, column] separated by spaces. Example: "0 5" \n', this.handleTurns.bind(this));
   }
 
   handleTurns(answer) {

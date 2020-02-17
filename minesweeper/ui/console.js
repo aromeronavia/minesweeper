@@ -14,7 +14,7 @@ class ConsoleSlot {
       return 'f';
     }
 
-    return '[]';
+    return '■';
   }
 }
 
@@ -45,6 +45,8 @@ export default class ConsoleUI {
   }
 
   draw() {
+    this.cleanTerminal();
+
     for (let i = 0; i < 9; i += 1) {
       let row = '';
       for (let j = 0; j < 9; j += 1) {
@@ -56,8 +58,19 @@ export default class ConsoleUI {
   }
 
   drawGameOver() {
+    this.cleanTerminal();
     this.draw();
+
     console.log('Game Over! Thanks for playing :D');
+  }
+
+  cleanTerminal() {
+    const lines = process.stdout.getWindowSize()[1];
+    for (let i = 0; i < lines; i += 1) {
+      console.log('\r\n');
+    }
+
+    console.log('----------------- Minesweeper -----------------');
   }
 
   drawSlot(row, column) {
