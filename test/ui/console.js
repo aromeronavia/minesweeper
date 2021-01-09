@@ -17,7 +17,7 @@ describe('Console UI', () => {
       } else if (boardSlot.hasFlag()) {
         expect(uiSlot).to.equals('!');
       } else if (!boardSlot.isRevealed()) {
-        expect(uiSlot.draw()).to.equals('[]');
+        expect(uiSlot.draw()).to.equals('■');
       }
     };
 
