@@ -12,7 +12,6 @@
     "css-loader": "^0.28.4",
     "html-webpack-plugin": "^2.28.0",
     "node-sass": "^4.14.1",
-    "phantomjs": "^1.9.7-15",
     "process-nextick-args": "^2.0.0",
     "sass-loader": "^6.0.6",
     "style-loader": "^0.18.2",
