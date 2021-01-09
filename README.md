@@ -1,3 +1,5 @@
+![example workflow name](https://github.com/beeetooo/minesweeper/workflows/test/badge.svg)
+
 # Minesweeper
 Implementation of a Minesweeper game with a very minimalist software design
 The UI at this moment is in console, and adding a new UI with HTML/CSS or with a graphics engine should be a matter of implementing the UI interface methods of `draw` and `drawGameOver`.
